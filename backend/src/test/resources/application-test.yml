@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+jwt:
+  secret: test-secret-key-for-testing-purposes-only
+  expiration: 3600000
+
+aws:
+  region: us-east-1
+  s3:
+    bucket-name: test-bucket
+  lambda:
+    function-name: test-function
+  sns:
+    topic-arn: arn:aws:sns:us-east-1:123456789012:test-topic
+
+redis:
+  queue:
+    order-complete: test:order:complete
+    invoice-generation: test:invoice:generation
