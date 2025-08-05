@@ -1,0 +1,80 @@
+spring:
+  application:
+    name: orderstream
+  datasource:
+    url: jdbc:postgresql://localhost:5432/orderstream
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 2000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+  security:
+    user:
+      name: admin
+      password: admin
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    ca.devign.orderstream: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+# JWT Configuration
+jwt:
+  secret: your-256-bit-secret-key-here-make-it-very-long-and-secure
+  expiration: 86400000 # 24 hours in milliseconds
+
+# AWS Configuration
+aws:
+  region: us-east-1
+  s3:
+    bucket-name: orderstream-invoices
+  lambda:
+    function-name: orderstream-invoice-generator
+  sns:
+    topic-arn: arn:aws:sns:us-east-1:123456789012:orderstream-invoice-topic
+
+# Redis Queue Configuration
+redis:
+  queue:
+    order-complete: order:complete
+    invoice-generation: invoice:generation
+
+# Application specific
+app:
+  cors:
+    allowed-origins: http://localhost:3000,http://localhost:3001
+    allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+    allowed-headers: "*"
+    allow-credentials: true
