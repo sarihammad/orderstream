@@ -193,6 +193,7 @@ docker-compose up -d
 ```
 
 This will start:
+
 - PostgreSQL database on port 5432
 - Redis cache/queue on port 6379
 - Spring Boot backend on port 8080
@@ -219,10 +220,12 @@ curl http://localhost:8080/api/health
 ## API Endpoints
 
 ### Authentication
+
 - `POST /api/auth/register` - Register new user
 - `POST /api/auth/login` - User login
 
 ### Products
+
 - `GET /api/products` - Get all products
 - `GET /api/products/{id}` - Get product by ID
 - `POST /api/products` - Create product (ADMIN only)
@@ -231,6 +234,7 @@ curl http://localhost:8080/api/health
 - `GET /api/products/low-stock` - Get low stock products (ADMIN only)
 
 ### Orders
+
 - `POST /api/orders` - Create new order
 - `GET /api/orders/my` - Get user's orders
 - `GET /api/orders` - Get all orders (ADMIN only)
@@ -336,16 +340,19 @@ docker-compose -f docker-compose.prod.yml up -d
 ## Security
 
 ### Authentication
+
 - JWT-based stateless authentication
 - Password encryption with BCrypt
 - Token expiration and refresh
 
 ### Authorization
+
 - Role-based access control (USER/ADMIN)
 - Method-level security annotations
 - Resource-level access control
 
 ### Data Protection
+
 - Input validation and sanitization
 - SQL injection prevention
 - XSS protection
@@ -355,16 +362,19 @@ docker-compose -f docker-compose.prod.yml up -d
 ## Performance
 
 ### Caching
+
 - Redis-based product caching
 - Cache eviction strategies
 - Distributed caching support
 
 ### Concurrency
+
 - PostgreSQL row-level locking
 - Optimistic locking for high concurrency
 - Deadlock prevention strategies
 
 ### Async Processing
+
 - Redis-based job queues
 - AWS Lambda integration
 - Non-blocking operations
