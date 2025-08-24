@@ -1,6 +1,6 @@
 # OrderStream
 
-A comprehensive e-commerce order management system built with Spring Boot and React. Features atomic order placement, real-time inventory management, role-based access control, and asynchronous invoice generation with AWS Lambda integration.
+An e-commerce order management system built with Spring Boot and React. Features atomic order placement, real-time inventory management, role-based access control, and asynchronous invoice generation with AWS Lambda integration.
 
 ---
 
